@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+  <title>Projects — Hasif</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { overflow-x: clip; width: 100%; }
+    body { overflow-x: clip; width: 100%; position: relative; font-family: 'DM Sans', system-ui, sans-serif; font-weight: 300; background: #F5F0E8; color: #2A2218; line-height: 1.7; }
+    img, svg { max-width: 100%; }
+    section, nav, div, p, h1, h2, h3 { max-width: 100%; }
+
+    :root {
+      --cream: #F5F0E8;
+      --cream-dark: #EDE7D9;
+      --terracotta: #C4714A;
+      --terracotta-light: #E8A882;
+      --terracotta-pale: #F5E0D3;
+      --ink: #2A2218;
+      --ink-mid: #5C4F3A;
+      --ink-light: #9C8E79;
+      --sage: #7A8C6E;
+      --sage-light: #C5D1BB;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem clamp(1.2rem, 5vw, 3rem);
+      background: rgba(245, 240, 232, 0.95);
+      border-bottom: 1px solid rgba(196, 113, 74, 0.15);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+    .nav-links { display: flex; gap: 3.5rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      font-weight: 400;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--terracotta); }
+    .nav-hamburger { display: none; }
+
+    /* HERO */
+    .page-hero {
+      padding: 5rem clamp(1.2rem, 5vw, 5rem) 4rem;
+      border-bottom: 1px solid rgba(196, 113, 74, 0.12);
+    }
+    .page-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .page-tag::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--terracotta); }
+    .page-title {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .page-title em { font-style: italic; color: var(--terracotta); }
+    .page-subtitle {
+      font-size: 0.92rem;
+      color: var(--ink-light);
+      max-width: 520px;
+      line-height: 1.9;
+    }
+
+    /* PROJECTS GRID */
+    .projects-section {
+      padding: 5rem clamp(1.2rem, 5vw, 5rem);
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    /* PROJECT CARD */
+    .project-card {
+      background: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      border-top: 3px solid var(--terracotta);
+      transition: transform 0.25s, box-shadow 0.25s;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.25s;
+    }
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(42,34,24,0.1);
+    }
+    .project-card-body { padding: 2rem; }
+    .project-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.8rem;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+    }
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--ink-mid);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .project-chip {
+      background: var(--terracotta-pale);
+      color: var(--terracotta);
+      font-size: 0.72rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--terracotta);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .project-link:hover { color: var(--terracotta); }
+    .project-link svg { width: 12px; height: 12px; }
+
+    /* Coming soon card */
+    .project-card.coming-soon {
+      border-top-color: var(--sage);
+      background: var(--cream);
+    }
+    .project-card.coming-soon .project-tag { color: var(--sage); }
+    .project-card.coming-soon .project-title { color: var(--ink-light); }
+
+    /* BACK LINK */
+    .back-bar {
+      padding: 1.5rem clamp(1.2rem, 5vw, 5rem);
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: rgba(245,240,232,0.6);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--terracotta-light); }
+    .back-link svg { width: 14px; height: 14px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      nav { padding: 0.9rem 1.2rem; position: relative; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(245,240,232,0.98);
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(196,113,74,0.15);
+        z-index: 200;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 0.85rem 1.5rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        border-bottom: 1px solid rgba(196,113,74,0.08);
+      }
+      .nav-hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+        background: none;
+        border: none;
+      }
+      .nav-hamburger span {
+        display: block;
+        width: 22px;
+        height: 1.5px;
+        background: var(--ink);
+        border-radius: 2px;
+      }
+      .page-hero { padding: 3rem 1.2rem 3rem; }
+      .projects-section { padding: 3rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Mohamed Hasif</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">About Me</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="index.html#contact">Contact Me</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="page-tag">My work</p>
+  <h1 class="page-title">Projects &<br/><em>Builds.</em></h1>
+  <p class="page-subtitle">A collection of projects I've worked on — from cybersecurity labs and forensics work to web applications and tools built during my studies.</p>
+</div>
+
+<section class="projects-section">
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="project-card">
+      <div class="project-card-body">
+        <p class="project-tag">Cybersecurity</p>
+        <h2 class="project-title">Incident Response Simulation</h2>
+        <p class="project-desc">Conducted a full incident response exercise involving detection, containment, and reporting of a simulated network intrusion. Applied structured response methodologies and documented findings in a professional report.</p>
+        <div class="project-tags">
+          <span class="project-chip">Incident Response</span>
+          <span class="project-chip">Network Security</span>
+          <span class="project-chip">Reporting</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card">
+      <div class="project-card-body">
+        <p class="project-tag">Digital Forensics</p>
+        <h2 class="project-title">Digital Evidence Investigation</h2>
+        <p class="project-desc">Used FTK Imager and Autopsy to acquire and analyse a disk image, recovering deleted files, identifying artefacts, and producing a forensic report with chain-of-custody documentation.</p>
+        <div class="project-tags">
+          <span class="project-chip">FTK Imager</span>
+          <span class="project-chip">Autopsy</span>
+          <span class="project-chip">Forensic Analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card">
+      <div class="project-card-body">
+        <p class="project-tag">Web Development</p>
+        <h2 class="project-title">Secure Web Application</h2>
+        <p class="project-desc">Built and audited a web application with a focus on security best practices — including input validation, SQL injection prevention, and secure session handling using HTML, CSS, and SQL.</p>
+        <div class="project-tags">
+          <span class="project-chip">HTML / CSS</span>
+          <span class="project-chip">SQL</span>
+          <span class="project-chip">Security Audit</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="project-card">
+      <div class="project-card-body">
+        <p class="project-tag">Network Security</p>
+        <h2 class="project-title">Network Design & Security Audit</h2>
+        <p class="project-desc">Designed and configured a secure network topology using Cisco Packet Tracer, implementing VLANs, access control lists, and firewall rules. Performed a security audit to identify and address vulnerabilities.</p>
+        <div class="project-tags">
+          <span class="project-chip">Cisco Packet Tracer</span>
+          <span class="project-chip">VLAN</span>
+          <span class="project-chip">Firewall</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMING SOON -->
+    <div class="project-card coming-soon">
+      <div class="project-card-body">
+        <p class="project-tag">Coming Soon</p>
+        <h2 class="project-title">More projects on the way...</h2>
+        <p class="project-desc">Currently working on new projects as part of my studies and personal development. Check back soon for updates.</p>
+        <div class="project-tags">
+          <span class="project-chip" style="background:#e8f0e4;color:var(--sage);">Ethical Hacking</span>
+          <span class="project-chip" style="background:#e8f0e4;color:var(--sage);">Python</span>
+          <span class="project-chip" style="background:#e8f0e4;color:var(--sage);">UI/UX</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="back-bar">
+  <a href="index.html" class="back-link">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M13 8H3M7 4l-4 4 4 4"/>
+    </svg>
+    Back to Portfolio
+  </a>
+</div>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (hamburger) {
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  }
+
+  // Fade in cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.project-card').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
