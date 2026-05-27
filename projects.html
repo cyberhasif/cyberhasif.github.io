@@ -209,6 +209,43 @@
     .back-link:hover { color: var(--terracotta-light); }
     .back-link svg { width: 14px; height: 14px; }
 
+    .project-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-top: 1.2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      text-decoration: none;
+      border: 1px solid rgba(196,113,74,0.3);
+      padding: 0.6rem 1.2rem;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      font-weight: 400;
+    }
+    .project-download:hover {
+      background: var(--terracotta);
+      color: #fff;
+      border-color: var(--terracotta);
+    }
+    .project-download svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* ── BACK STRIP ── */
+    .back-strip {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem clamp(1.2rem, 5vw, 3rem);
+      background: var(--ink);
+      text-decoration: none;
+      width: 100%;
+    }
+    .back-strip svg { width: 13px; height: 13px; color: var(--terracotta-light); flex-shrink: 0; }
+    .back-strip span { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,240,232,0.7); font-weight: 400; transition: color 0.2s; }
+    .back-strip:hover span { color: var(--terracotta-light); }
+
     /* RESPONSIVE */
     @media (max-width: 600px) {
       nav { padding: 0.9rem 1.2rem; position: relative; }
@@ -255,6 +292,10 @@
 </head>
 <body>
 
+<a href="index.html" class="back-strip">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
+  <span>Return to Portfolio</span>
+</a>
 <nav>
   <a href="index.html" class="nav-logo">Mohamed Hasif</a>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu">
@@ -262,7 +303,7 @@
   </button>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#about">About Me</a></li>
+    <li><a href="about.html">About Me</a></li>
     <li><a href="projects.html" class="active">Projects</a></li>
     <li><a href="index.html#contact">Contact Me</a></li>
   </ul>
@@ -280,56 +321,91 @@
     <!-- PROJECT 1 -->
     <div class="project-card">
       <div class="project-card-body">
-        <p class="project-tag">Cybersecurity</p>
-        <h2 class="project-title">Incident Response Simulation</h2>
-        <p class="project-desc">Conducted a full incident response exercise involving detection, containment, and reporting of a simulated network intrusion. Applied structured response methodologies and documented findings in a professional report.</p>
+        <p class="project-tag">Network Security</p>
+        <h2 class="project-title">Network Security Using Cisco Packet Tracer</h2>
+        <p class="project-desc">Designed and configured a secure network topology using Cisco Packet Tracer, implementing VLANs, access control lists, and firewall rules to simulate real-world enterprise network security.</p>
         <div class="project-tags">
-          <span class="project-chip">Incident Response</span>
-          <span class="project-chip">Network Security</span>
-          <span class="project-chip">Reporting</span>
+          <span class="project-chip">Cisco Packet Tracer</span>
+          <span class="project-chip">VLAN</span>
+          <span class="project-chip">Firewall</span>
+          <span class="project-chip">Network Design</span>
         </div>
+        <a href="project1.pdf" download class="project-download">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
       </div>
     </div>
 
     <!-- PROJECT 2 -->
     <div class="project-card">
       <div class="project-card-body">
-        <p class="project-tag">Digital Forensics</p>
-        <h2 class="project-title">Digital Evidence Investigation</h2>
-        <p class="project-desc">Used FTK Imager and Autopsy to acquire and analyse a disk image, recovering deleted files, identifying artefacts, and producing a forensic report with chain-of-custody documentation.</p>
+        <p class="project-tag">Incident Response</p>
+        <h2 class="project-title">Incident Response and Management Playbook</h2>
+        <p class="project-desc">Developed a comprehensive incident response and management playbook outlining step-by-step procedures for detecting, containing, eradicating, and recovering from cybersecurity incidents.</p>
         <div class="project-tags">
-          <span class="project-chip">FTK Imager</span>
-          <span class="project-chip">Autopsy</span>
-          <span class="project-chip">Forensic Analysis</span>
+          <span class="project-chip">Incident Response</span>
+          <span class="project-chip">Playbook</span>
+          <span class="project-chip">Documentation</span>
         </div>
+        <a href="project2.pdf" download class="project-download">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
       </div>
     </div>
 
     <!-- PROJECT 3 -->
     <div class="project-card">
       <div class="project-card-body">
-        <p class="project-tag">Web Development</p>
-        <h2 class="project-title">Secure Web Application</h2>
-        <p class="project-desc">Built and audited a web application with a focus on security best practices — including input validation, SQL injection prevention, and secure session handling using HTML, CSS, and SQL.</p>
+        <p class="project-tag">IT Security Management</p>
+        <h2 class="project-title">IT Security Management and Audit Playbook — ISO 27001 Clauses 6–10</h2>
+        <p class="project-desc">Created a detailed playbook covering IT security management and audit procedures aligned with ISO 27001 framework clauses 6 through 10, addressing risk treatment, controls, and performance evaluation.</p>
         <div class="project-tags">
-          <span class="project-chip">HTML / CSS</span>
-          <span class="project-chip">SQL</span>
+          <span class="project-chip">ISO 27001</span>
           <span class="project-chip">Security Audit</span>
+          <span class="project-chip">Framework</span>
         </div>
+        <a href="project3.pdf" download class="project-download">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
       </div>
     </div>
 
     <!-- PROJECT 4 -->
     <div class="project-card">
       <div class="project-card-body">
-        <p class="project-tag">Network Security</p>
-        <h2 class="project-title">Network Design & Security Audit</h2>
-        <p class="project-desc">Designed and configured a secure network topology using Cisco Packet Tracer, implementing VLANs, access control lists, and firewall rules. Performed a security audit to identify and address vulnerabilities.</p>
+        <p class="project-tag">Security Auditing</p>
+        <h2 class="project-title">Auditing a VM to Find Security Vulnerabilities</h2>
+        <p class="project-desc">Conducted a hands-on security audit of a virtual machine environment, identifying misconfigurations, unpatched vulnerabilities, and security weaknesses, then documented findings with recommended remediation steps.</p>
         <div class="project-tags">
-          <span class="project-chip">Cisco Packet Tracer</span>
-          <span class="project-chip">VLAN</span>
-          <span class="project-chip">Firewall</span>
+          <span class="project-chip">VM Auditing</span>
+          <span class="project-chip">Vulnerability Assessment</span>
+          <span class="project-chip">Remediation</span>
         </div>
+        <a href="project4.pdf" download class="project-download">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+      </div>
+    </div>
+
+    <!-- PROJECT 5 -->
+    <div class="project-card">
+      <div class="project-card-body">
+        <p class="project-tag">Web Development</p>
+        <h2 class="project-title">Secure Web Application Project Proposal</h2>
+        <p class="project-desc">Developed a detailed project proposal for a secure web application, covering architecture design, threat modelling, security controls, and implementation strategy with a focus on best practices for web security.</p>
+        <div class="project-tags">
+          <span class="project-chip">Web Security</span>
+          <span class="project-chip">Threat Modelling</span>
+          <span class="project-chip">Project Proposal</span>
+        </div>
+        <a href="project5.pdf" download class="project-download">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
       </div>
     </div>
 
@@ -339,11 +415,6 @@
         <p class="project-tag">Coming Soon</p>
         <h2 class="project-title">More projects on the way...</h2>
         <p class="project-desc">Currently working on new projects as part of my studies and personal development. Check back soon for updates.</p>
-        <div class="project-tags">
-          <span class="project-chip" style="background:#e8f0e4;color:var(--sage);">Ethical Hacking</span>
-          <span class="project-chip" style="background:#e8f0e4;color:var(--sage);">Python</span>
-          <span class="project-chip" style="background:#e8f0e4;color:var(--sage);">UI/UX</span>
-        </div>
       </div>
     </div>
 
