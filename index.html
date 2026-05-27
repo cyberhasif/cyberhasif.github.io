@@ -44,13 +44,67 @@
 
     /* ── NAV ── */
     nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem clamp(1.2rem, 5vw, 3rem);
+      background: rgba(245, 240, 232, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196, 113, 74, 0.15);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      font-weight: 400;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--terracotta); }
+    .nav-hamburger { display: none; }
+
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
       position: static;
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 3rem;
+      padding: 1.1rem clamp(1.2rem, 5vw, 3rem);
       background: rgba(245, 240, 232, 0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(196, 113, 74, 0.15);
@@ -70,7 +124,7 @@
 
     .nav-links {
       display: flex;
-      gap: 3.5rem;
+      gap: 3rem;
       list-style: none;
       align-items: center;
     }
@@ -81,14 +135,15 @@
       text-transform: uppercase;
       color: var(--ink-mid);
       text-decoration: none;
-      transition: color 0.2s;
       font-weight: 400;
       line-height: 1;
       display: flex;
       align-items: center;
+      transition: color 0.2s;
     }
 
     .nav-links a:hover { color: var(--terracotta); }
+    .nav-hamburger { display: none; }
 
     /* ── HERO ── */
     .hero {
@@ -106,6 +161,8 @@
       max-width: min(780px, 100%);
     }
 
+    .hero-right { display: none; }
+
     .hero-tag {
       font-size: 0.72rem;
       letter-spacing: 0.18em;
@@ -120,8 +177,7 @@
     .hero-tag::before {
       content: '';
       display: inline-block;
-      width: 28px;
-      height: 1px;
+      width: 28px; height: 1px;
       background: var(--terracotta);
     }
 
@@ -134,10 +190,7 @@
       margin-bottom: 1rem;
     }
 
-    .hero-name em {
-      font-style: italic;
-      color: var(--terracotta);
-    }
+    .hero-name em { font-style: italic; color: var(--terracotta); }
 
     .hero-subtitle {
       font-family: var(--sans);
@@ -156,6 +209,8 @@
       max-width: 480px;
       margin-bottom: 2.5rem;
       line-height: 1.9;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
 
     .hero-cta {
@@ -175,85 +230,7 @@
     }
 
     .hero-cta:hover { background: var(--ink); transform: translateY(-2px); }
-
     .hero-cta svg { width: 14px; height: 14px; }
-
-    .hero-right {
-      display: none;
-    }
-
-    .hero-right::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 30% 40%, rgba(196, 113, 74, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 75% 70%, rgba(122, 140, 110, 0.1) 0%, transparent 50%);
-    }
-
-    .hero-avatar-wrap {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-    }
-
-    .hero-avatar {
-      width: 240px;
-      height: 300px;
-      border-radius: 120px 120px 40px 40px;
-      background: var(--terracotta-pale);
-      border: 3px solid rgba(196, 113, 74, 0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-      overflow: hidden;
-    }
-
-    .avatar-initials {
-      font-family: var(--serif);
-      font-size: 5rem;
-      font-weight: 300;
-      color: var(--terracotta);
-      letter-spacing: -0.03em;
-    }
-
-    .hero-badge {
-      background: var(--ink);
-      color: var(--cream);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      padding: 0.5rem 1.2rem;
-      border-radius: 20px;
-      display: inline-block;
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--ink-light);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--terracotta), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; }
-    }
 
     /* ── SECTIONS COMMON ── */
     section { padding: 6rem clamp(1.2rem, 5vw, 5rem); width: 100%; }
@@ -322,35 +299,65 @@
       max-width: 100%;
     }
 
-    .about-facts {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
-    }
-
-    .fact-card {
-      background: var(--cream);
-      padding: 1.8rem 1.4rem;
+    .about-seemore {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      min-height: 260px;
+      background: var(--ink);
       border-radius: 4px;
-      border-top: 2px solid var(--terracotta);
-      text-align: center;
+      padding: 2.5rem;
+      text-decoration: none;
+      color: var(--cream);
+      transition: background 0.25s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
     }
 
-    .fact-number {
+    .about-seemore::before {
+      content: '';
+      position: absolute;
+      bottom: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(196, 113, 74, 0.15);
+      transition: transform 0.4s ease;
+    }
+
+    .about-seemore:hover { background: var(--terracotta); transform: translateY(-3px); }
+    .about-seemore:hover::before { transform: scale(1.4); }
+
+    .about-seemore-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.5);
+    }
+
+    .about-seemore-title {
       font-family: var(--serif);
-      font-size: 2.8rem;
+      font-size: 2.4rem;
       font-weight: 300;
-      color: var(--terracotta);
-      line-height: 1;
-      margin-bottom: 0.6rem;
+      line-height: 1.15;
+      color: var(--cream);
+      margin-top: auto;
+      margin-bottom: 1.5rem;
     }
 
-    .fact-label {
-      font-size: 0.73rem;
-      color: var(--ink-light);
-      letter-spacing: 0.06em;
-      line-height: 1.5;
+    .about-seemore-title em { font-style: italic; color: var(--terracotta-light); }
+    .about-seemore:hover .about-seemore-title em { color: rgba(245,240,232,0.8); }
+
+    .about-seemore-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      border: 1px solid rgba(245,240,232,0.25);
+      border-radius: 50%;
     }
+
+    .about-seemore-arrow svg { width: 16px; height: 16px; }
 
     /* ── SKILLS ── */
     #skills { background: var(--cream); }
@@ -370,15 +377,13 @@
 
     .skill-group-title {
       font-family: var(--serif);
-      font-size: 1.1rem;
-      font-weight: 300;
+      font-size: 1.3rem;
+      font-weight: 600;
       color: var(--ink);
       margin-bottom: 1.5rem;
     }
 
-    .skill-item {
-      margin-bottom: 1rem;
-    }
+    .skill-item { margin-bottom: 1rem; }
 
     .skill-name {
       display: flex;
@@ -404,9 +409,7 @@
       transform: scaleX(0);
     }
 
-    @keyframes fillBar {
-      to { transform: scaleX(1); }
-    }
+    @keyframes fillBar { to { transform: scaleX(1); } }
 
     .tag-cloud {
       display: flex;
@@ -424,9 +427,83 @@
       letter-spacing: 0.04em;
     }
 
+    /* ── PROJECTS TEASER ── */
+    #projects-teaser {
+      background: var(--terracotta-pale);
+      padding: 6rem clamp(1.2rem, 5vw, 5rem);
+    }
+
+    .projects-teaser-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .projects-teaser-left .section-label { color: var(--terracotta); }
+    .projects-teaser-left .section-label::before { background: var(--terracotta); }
+    .projects-teaser-left .section-title { margin-bottom: 1.5rem; }
+
+    .projects-teaser-text {
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+      line-height: 2;
+      margin-bottom: 1rem;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .projects-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 0.9rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: background 0.25s, transform 0.2s;
+      align-self: flex-start;
+    }
+
+    .projects-cta:hover { background: var(--terracotta); transform: translateY(-2px); }
+    .projects-cta svg { width: 14px; height: 14px; }
+
+    .projects-teaser-right {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .teaser-stat {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 4px;
+      border-top: 2px solid var(--terracotta);
+    }
+
+    .teaser-stat-num {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--terracotta);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .teaser-stat-label {
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+    }
+
     /* ── EXPERIENCE ── */
     #experience { background: var(--ink); color: var(--cream); }
-
     #experience .section-label { color: var(--terracotta-light); }
     #experience .section-label::before { background: var(--terracotta-light); }
     #experience .section-title { color: var(--cream); }
@@ -441,7 +518,7 @@
       position: absolute;
       left: 0; top: 0; bottom: 0;
       width: 1px;
-      background: rgba(245, 224, 211, 0.2);
+      background: rgba(245, 240, 232, 0.2);
     }
 
     .timeline-item {
@@ -452,10 +529,8 @@
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: -2rem;
-      top: 0.4rem;
-      width: 9px;
-      height: 9px;
+      left: -2rem; top: 0.4rem;
+      width: 9px; height: 9px;
       border-radius: 50%;
       background: var(--terracotta);
       transform: translateX(-4px);
@@ -511,10 +586,9 @@
       content: '';
       position: absolute;
       bottom: 0; right: 0;
-      width: 80px; height: 80px;
+      width: 44px; height: 44px;
       background: var(--terracotta-pale);
-      border-radius: 80px 0 0 0;
-      z-index: -1;
+      border-radius: 44px 0 0 0;
       pointer-events: none;
     }
 
@@ -577,7 +651,7 @@
     .vol-title {
       font-family: var(--serif);
       font-size: 1.15rem;
-      font-weight: 300;
+      font-weight: 600;
       color: var(--ink);
       margin-bottom: 0.3rem;
     }
@@ -719,18 +793,6 @@
       text-transform: none;
       word-break: break-all;
     }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.72rem;
-      color: rgba(245, 240, 232, 0.3);
-      background: var(--ink);
-      letter-spacing: 0.08em;
-      border-top: 1px solid rgba(245, 240, 232, 0.07);
-    }
-
-    .nav-hamburger { display: none; }
 
     /* ── ANIMATIONS ── */
     .fade-up {
@@ -1019,8 +1081,12 @@
   <a href="#" class="nav-logo">Mohamed Hasif</a>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links" id="navLinks">
+    <li><a href="#">Home</a></li>
     <li><a href="#about">About Me</a></li>
     <li><a href="projects.html">Projects</a></li>
+    
+    
+    
     <li><a href="#contact">Contact Me</a></li>
   </ul>
 </nav>
@@ -1059,20 +1125,15 @@
       </p>
     </div>
     <div class="fade-up" style="transition-delay: 0.15s;">
-      <div class="about-facts">
-        <div class="fact-card">
-          <div class="fact-number">2+</div>
-          <div class="fact-label">Years of study in Cybersecurity</div>
-        </div>
-        <div class="fact-card">
-          <div class="fact-number">10+</div>
-          <div class="fact-label">Tools & platforms mastered</div>
-        </div>
-        <div class="fact-card">
-          <div class="fact-number">3+</div>
-          <div class="fact-label">Volunteer roles</div>
-        </div>
-      </div>
+      <a href="about.html" class="about-seemore">
+        <span class="about-seemore-label">Get to know me</span>
+        <span class="about-seemore-title">More about<br/><em>my story</em></span>
+        <span class="about-seemore-arrow">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </span>
+      </a>
     </div>
   </div>
 </section>
@@ -1135,6 +1196,46 @@
           <span class="tag" style="background: #e8f0e4; color: var(--sage);">Secure Web Apps</span>
           <span class="tag" style="background: #e8f0e4; color: var(--sage);">UI/UX</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS TEASER -->
+<section id="projects-teaser">
+  <div class="projects-teaser-inner">
+    <div class="projects-teaser-left fade-up">
+      <p class="section-label">My projects</p>
+      <h2 class="section-title">Built, tested,<br/>and learned.</h2>
+      <p class="projects-teaser-text">
+        Over the course of my studies, I have had the opportunity to work on multiple hands-on projects spanning cybersecurity, digital forensics, network security, secure web development, incident response, and security auditing. Each project has pushed me to apply what I've learned in the classroom to real-world scenarios, from conducting forensic investigations and incident response simulations to building, testing, and auditing secure web applications with a focus on identifying and addressing vulnerabilities before they become threats.
+      </p>
+      <p class="projects-teaser-text">
+        Along the way, I have come into contact with a wide range of tools and technologies, from Autopsy and FTK Imager to Cisco Packet Tracer, Python, and more. Every project has been a chance to sharpen my technical skills, develop my problem-solving mindset, and grow into a more well-rounded professional.
+      </p>
+      <a href="projects.html" class="projects-cta">
+        View my projects
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+    <div class="projects-teaser-right fade-up" style="transition-delay:0.12s">
+      <div class="teaser-stat">
+        <div class="teaser-stat-num">4+</div>
+        <div class="teaser-stat-label">Projects completed</div>
+      </div>
+      <div class="teaser-stat">
+        <div class="teaser-stat-num">10+</div>
+        <div class="teaser-stat-label">Tools & technologies used</div>
+      </div>
+      <div class="teaser-stat">
+        <div class="teaser-stat-num">3</div>
+        <div class="teaser-stat-label">Years of hands-on learning</div>
+      </div>
+      <div class="teaser-stat">
+        <div class="teaser-stat-num">∞</div>
+        <div class="teaser-stat-label">Curiosity & drive to grow</div>
       </div>
     </div>
   </div>
