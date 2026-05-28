@@ -211,6 +211,9 @@
     /* Two column layout */
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
 
+    /* Full width single column */
+    .who-grid { display: flex; flex-direction: column; gap: 0; max-width: 800px; }
+
     /* Body text */
     .body-text {
       font-size: 0.92rem;
@@ -268,6 +271,38 @@
     .photo-slot-icon { color: var(--terracotta); opacity: 0.35; }
     .photo-slot-icon svg { width: 28px; height: 28px; }
     .photo-slot span { font-size: 0.7rem; color: var(--ink-light); text-align: center; padding: 0 0.8rem; letter-spacing: 0.04em; }
+
+    /* Activity blocks */
+    .activity-block {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(196, 113, 74, 0.12);
+    }
+    .activity-block:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .activity-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .photo-slot.landscape {
+      aspect-ratio: 4/3;
+      border-radius: 4px;
+    }
+
+    .activity-caption {
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      letter-spacing: 0.04em;
+      font-style: italic;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .activity-photos { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    }
 
     /* Values grid */
     .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px,100%), 1fr)); gap: 1.2rem; }
@@ -350,7 +385,7 @@
   <div class="hero-left">
     <p class="page-tag">About me</p>
     <h1 class="page-title">The person<br/>behind the <em>work.</em></h1>
-    <p class="hero-desc">I'm Hasif — a Cybersecurity and Digital Forensics student who believes that curiosity, care, and a willingness to keep growing are what set great people apart from good ones.</p>
+    <p class="hero-desc">I'm Hasif — a Cybersecurity and Digital Forensics student who believes that curiosity, discipline, and a willingness to keep growing are what set great people apart from good ones.</p>
   </div>
   <div class="hero-right">
     <!-- Replace this div with <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;"> when ready -->
@@ -366,26 +401,27 @@
 
 <!-- WHO I AM -->
 <section class="content-section white">
-  <div class="two-col">
-    <div class="fade-up">
-      <p class="section-label">Who I am</p>
-      <h2 class="section-title">More than just<br/>a student.</h2>
-      <p class="body-text">
-        I'm Haja Najumudeen Mohamed Hasif, a Cybersecurity and Digital Forensics student at Temasek Polytechnic. Growing up, I was always the kind of person who wanted to understand how things worked — whether it was taking apart gadgets, figuring out why systems behaved a certain way, or simply asking one too many questions.
-      </p>
-      <p class="body-text">
-        That curiosity eventually led me to cybersecurity, a field where asking questions and thinking critically isn't just encouraged — it's essential. I've since channelled that same energy into my studies, my projects, and the way I approach every new challenge that comes my way.
-      </p>
-      <p class="body-text">
-        Outside of academics, I'm someone who genuinely enjoys connecting with people. I find meaning in helping others, whether it's tutoring a student who is struggling, guiding an elderly person through their first smartphone experience, or showing up for my community through volunteering.
-      </p>
-    </div>
-    <div class="fade-up" style="transition-delay:0.12s">
-      <blockquote class="pull-quote">"I believe every person you meet and every experience you go through teaches you something — if you're paying attention."</blockquote>
-      <p class="body-text">
-        I carry that belief into everything I do. I try to approach life with openness, patience, and a genuine desire to keep improving — not just as a professional, but as a person.
-      </p>
-    </div>
+  <div class="fade-up">
+    <p class="section-label">Who I am</p>
+    <h2 class="section-title">More than just<br/>a student.</h2>
+  </div>
+  <div class="who-grid fade-up" style="transition-delay:0.1s">
+    <p class="body-text">
+      I chose to pursue a diploma in Cybersecurity and Digital Forensics because I believe everyone should feel safe when using technology and digital devices. Growing up, I was always the kind of person who wanted to understand how things worked, whether it was taking apart gadgets, figuring out why systems behaved a certain way, or simply asking one too many questions.
+    </p>
+    <p class="body-text">
+      That curiosity eventually led me to cybersecurity, a field where asking questions and thinking critically are not just encouraged but essential. Since then, I have channelled that same curiosity into my studies, projects, and the way I approach new challenges. My goal is to use my skills and knowledge to help create a safer cyber environment in the future.
+    </p>
+    <p class="body-text">
+      Apart from my studies, I enjoy living an active and healthy lifestyle. I love playing sports, especially football, and I even have my own football team where we occasionally play against other teams. I also enjoy meeting new people and spending time with my friends because I believe maintaining strong friendships is important.
+    </p>
+    <p class="body-text">
+      During my free time, I participate in volunteering activities, mainly at the mosque, where I help the staff organise events and community activities. I also enjoy giving back to the community by taking part in workshops, such as helping elderly people learn how to use digital devices.
+    </p>
+    <blockquote class="pull-quote fade-up" style="transition-delay:0.18s">"I believe every person you meet and every experience you go through teaches you something, if you are paying attention."</blockquote>
+    <p class="body-text">
+      I carry that belief into everything I do. I try to approach life with openness, patience, and a genuine desire to keep improving, not just as a professional, but as a person.
+    </p>
   </div>
 </section>
 
@@ -393,37 +429,52 @@
 <section class="content-section" style="background: var(--cream-dark);">
   <p class="section-label fade-up">Moments & memories</p>
   <h2 class="section-title fade-up">A glimpse into<br/>my world.</h2>
-  <div class="photo-grid fade-up">
-    <!-- Replace each .photo-slot with your actual images like:
-         <div class="photo-slot"><img src="volunteer1.jpg" alt="Volunteering"></div> -->
-    <div class="photo-slot">
-      <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-      <span>Add a photo</span>
+
+  <!-- ACTIVITY 1 -->
+  <div class="activity-block fade-up">
+    <div class="activity-photos">
+      <div class="photo-slot landscape">
+        <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        <span>football-match.jpg</span>
+      </div>
+      <div class="photo-slot landscape">
+        <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        <span>football-team.jpg</span>
+      </div>
     </div>
-    <div class="photo-slot">
-      <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-      <span>Add a photo</span>
-    </div>
-    <div class="photo-slot">
-      <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-      <span>Add a photo</span>
-    </div>
-    <div class="photo-slot">
-      <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-      <span>Add a photo</span>
-    </div>
-    <div class="photo-slot">
-      <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-      <span>Add a photo</span>
-    </div>
-    <div class="photo-slot">
-      <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-      <span>Add a photo</span>
-    </div>
+    <p class="activity-caption">Playing football with my team.</p>
   </div>
-  <p style="font-size:0.75rem; color:var(--ink-light); margin-top:1.2rem; letter-spacing:0.06em;">
-    Photos coming soon — check back for updates.
-  </p>
+
+  <!-- ACTIVITY 2 -->
+  <div class="activity-block fade-up" style="transition-delay:0.1s">
+    <div class="activity-photos">
+      <div class="photo-slot landscape">
+        <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        <span>friends-eating.jpg</span>
+      </div>
+      <div class="photo-slot landscape">
+        <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        <span>friends-cycling.jpg</span>
+      </div>
+    </div>
+    <p class="activity-caption">Spending time with friends.</p>
+  </div>
+
+  <!-- ACTIVITY 3 -->
+  <div class="activity-block fade-up" style="transition-delay:0.2s">
+    <div class="activity-photos">
+      <div class="photo-slot landscape">
+        <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        <span>volunteer-mosque.jpg</span>
+      </div>
+      <div class="photo-slot landscape">
+        <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        <span>volunteer-workshop.jpg</span>
+      </div>
+    </div>
+    <p class="activity-caption">Giving back to the community.</p>
+  </div>
+
 </section>
 
 <!-- VALUES -->
