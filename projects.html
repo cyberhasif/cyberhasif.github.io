@@ -46,6 +46,7 @@
       padding: 0.45rem clamp(1.2rem, 5vw, 3rem);
       border-top: 1px solid rgba(196, 113, 74, 0.1);
       background: rgba(196, 113, 74, 0.04);
+      width: 100%;
     }
     .nav-return {
       display: inline-flex;
@@ -272,6 +273,7 @@
       padding: 0.45rem clamp(1.2rem, 5vw, 3rem);
       border-top: 1px solid rgba(196, 113, 74, 0.1);
       background: rgba(196, 113, 74, 0.04);
+      width: 100%;
     }
     .nav-return {
       display: inline-flex;
@@ -304,7 +306,8 @@
 
     /* RESPONSIVE */
     @media (max-width: 600px) {
-      nav { padding: 0.9rem 1.2rem; position: relative; }
+      .nav-top { padding: 0.9rem 1.2rem; position: relative; }
+      nav { padding: 0; }
       .nav-links {
         display: none;
         position: absolute;
@@ -344,6 +347,7 @@
       .page-hero { padding: 3rem 1.2rem 3rem; }
       .projects-section { padding: 3rem 1.2rem; }
     }
+
   </style>
 </head>
 <body>
@@ -502,5 +506,6 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.project-card').forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
