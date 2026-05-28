@@ -261,11 +261,16 @@
       border: 1px dashed rgba(196, 113, 74, 0.25);
     }
 
+    .photo-slot.landscape {
+      aspect-ratio: 4/3;
+    }
+
     .photo-slot img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 4px;
+      display: block;
     }
 
     .photo-slot-icon { color: var(--terracotta); opacity: 0.35; }
@@ -388,14 +393,7 @@
     <p class="hero-desc">I'm Hasif — a Cybersecurity and Digital Forensics student who believes that curiosity, discipline, and a willingness to keep growing are what set great people apart from good ones.</p>
   </div>
   <div class="hero-right">
-    <!-- Replace this div with <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;"> when ready -->
-    <div class="photo-placeholder">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-        <circle cx="12" cy="7" r="4"/>
-      </svg>
-      <span>Add your photo here</span>
-    </div>
+    <img src="profile.jpg" alt="Haja Najumudeen Mohamed Hasif" style="width:100%; height:100%; object-fit:cover;">
   </div>
 </div>
 
@@ -434,12 +432,10 @@
   <div class="activity-block fade-up">
     <div class="activity-photos">
       <div class="photo-slot landscape">
-        <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-        <span>football-match.jpg</span>
+        <img src="football-match.jpg" alt="Playing football match">
       </div>
       <div class="photo-slot landscape">
-        <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-        <span>football-team.jpg</span>
+        <img src="football-team.jpg" alt="Football team photo">
       </div>
     </div>
     <p class="activity-caption">Playing football with my team.</p>
@@ -449,12 +445,10 @@
   <div class="activity-block fade-up" style="transition-delay:0.1s">
     <div class="activity-photos">
       <div class="photo-slot landscape">
-        <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-        <span>friends-eating.jpg</span>
+        <img src="friends-eating.jpg" alt="Eating out with friends">
       </div>
       <div class="photo-slot landscape">
-        <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-        <span>friends-cycling.jpg</span>
+        <img src="friends-cycling.jpg" alt="Cycling with friends">
       </div>
     </div>
     <p class="activity-caption">Spending time with friends.</p>
@@ -464,12 +458,10 @@
   <div class="activity-block fade-up" style="transition-delay:0.2s">
     <div class="activity-photos">
       <div class="photo-slot landscape">
-        <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-        <span>volunteer-mosque.jpg</span>
+        <img src="volunteer-mosque.jpg" alt="Volunteering at mosque">
       </div>
       <div class="photo-slot landscape">
-        <div class="photo-slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-        <span>volunteer-workshop.jpg</span>
+        <img src="volunteer-workshop.jpg" alt="Elderly digital workshop">
       </div>
     </div>
     <p class="activity-caption">Giving back to the community.</p>
